@@ -13,24 +13,29 @@ from collections.abc import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from finmentor.backend.app.config import settings
+from app.config import settings
 
 # ---------------------------------------------------------------------------
 # Engine
 # ---------------------------------------------------------------------------
 
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
+
+from app.config import settings
+
 engine = create_async_engine(
     settings.DATABASE_URL,
     echo=settings.DB_ECHO,
-    pool_size=settings.DB_POOL_SIZE,
-    max_overflow=settings.DB_MAX_OVERFLOW,
-    pool_pre_ping=True,   # drop stale connections before using them
+    poolclass=NullPool,
+    connect_args={"statement_cache_size": 0},
+    pool_pre_ping=True,
 )
 
 AsyncSessionFactory = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
-    expire_on_commit=False,   # avoid implicit lazy loads after commit
+    expire_on_commit=False,
     autoflush=False,
 )
 
