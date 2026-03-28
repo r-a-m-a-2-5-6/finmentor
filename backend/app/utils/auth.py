@@ -18,10 +18,13 @@ from passlib.context import CryptContext
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from finmentor.backend.app.config import settings
-from finmentor.backend.app.db import get_db
+from app.config import settings
+from app.db import get_db
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(
+    schemes=["argon2"],
+    deprecated="auto"
+)
 bearer_scheme = HTTPBearer()
 
 
@@ -73,7 +76,7 @@ async def get_current_user(
     db: AsyncSession = Depends(get_db),
 ):
     """Validate JWT and return the User ORM object."""
-    from finmentor.backend.app.models.user import User   # local import avoids circulars
+    from app.models.user import User   # local import avoids circulars
 
     user_id_str = decode_token(credentials.credentials)
     try:
