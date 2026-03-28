@@ -23,11 +23,11 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from finmentor.backend.app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
+from app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
 
 if TYPE_CHECKING:
-    from finmentor.backend.app.models.portfolio import Portfolio
-    from finmentor.backend.app.models.chat import ChatSession
+    from app.models.portfolio import Portfolio
+    from app.models.chat import ChatSession
 
 
 # ---------------------------------------------------------------------------

@@ -7,7 +7,7 @@ One User → many Portfolios (e.g., "Retirement", "Child Education")
 One Portfolio → many PortfolioHoldings (asset-level rows)
 One Portfolio → many CashFlowEntry rows (for XIRR computation)
 
-Author : FinMentor Platform
+Author : 
 """
 
 from __future__ import annotations
@@ -23,10 +23,10 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from finmentor.backend.app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
+from app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
 
 if TYPE_CHECKING:
-    from finmentor.backend.app.models.user import User
+    from app.models.user import User
 
 
 # ---------------------------------------------------------------------------
