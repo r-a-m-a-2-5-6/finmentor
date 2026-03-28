@@ -1,10 +1,10 @@
 """schemas/__init__.py — re-export all schema classes for clean imports."""
 
-from finmentor.backend.app.schemas.auth import (
+from app.schemas.auth import (
     RegisterRequest, LoginRequest, TokenResponse,
     UserResponse, ProfileUpdateRequest, ProfileResponse,
 )
-from finmentor.backend.app.schemas.finance import (
+from app.schemas.finance import (
     FIRERequest, FIREResponse, FIREMilestone,
     SIPMaturityRequest, SIPMaturityResponse,
     SIPRequiredRequest, SIPRequiredResponse,
@@ -12,12 +12,12 @@ from finmentor.backend.app.schemas.finance import (
     PortfolioXRayRequest, PortfolioXRayResponse, AllocationDrift,
     HealthScoreResponse, HealthDimension,
 )
-from finmentor.backend.app.schemas.portfolio import (
+from app.schemas.portfolio import (
     CreatePortfolioRequest, PortfolioResponse,
     AddHoldingRequest, HoldingResponse,
     AddCashFlowRequest, CashFlowResponse,
 )
-from finmentor.backend.app.schemas.chat import (
+from app.schemas.chat import (
     MentorChatRequest, MentorChatResponse, EngineFunctionCall,
     SessionSummary, MessageResponse, MessageFeedbackRequest,
 )
